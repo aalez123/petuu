@@ -1,166 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Anniversary My Love ❤️</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
-      overflow-x: hidden;
-      color: #fff;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset & Background */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffe6ea 0%, #ffc1cc 100%);
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        /* Frosted Glass Start Screen */
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 230, 234, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: opacity 0.5s ease;
+        }
 
-    h1 {
-      margin-top: 30px;
-      font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      background: linear-gradient(45deg, #ff758c, #ff7eb3, #fad0c4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
+        #start-screen h1 {
+            color: #ff4d79;
+            font-size: 2rem;
+            animation: pulse 1.5s infinite;
+        }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px rgba(255,118,136,0.5); }
-      to { text-shadow: 0 0 25px rgba(255,118,136,0.9), 0 0 40px rgba(255,200,210,0.8); }
-    }
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
 
-    .message {
-      max-width: 80%;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 25px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #fff;
-      text-align: justify;
-    }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+        }
 
-    .highlight {
-      color: #ffeb3b;
-      font-weight: 700;
-    }
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .love {
-      color: #ff4081;
-      font-weight: 700;
-    }
+        /* Main UI Card */
+        #main-content {
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(255, 77, 121, 0.15);
+            z-index: 10;
+            width: 90%;
+            max-width: 450px;
+            animation: floatIn 0.6s ease-out forwards;
+        }
 
-    .images {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 30px;
-      flex-wrap: wrap;
-    }
+        img {
+            max-width: 100%;
+            width: 220px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
 
-    .images img {
-      width: 300px;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      transition: transform 0.4s, box-shadow 0.4s;
-    }
+        h1 {
+            color: #ff3366;
+            margin: 15px 0 25px 0;
+            font-size: 2rem;
+            line-height: 1.3;
+        }
 
-    .images img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
-    }
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
 
-    footer {
-      margin: 40px 0;
-      font-size: 1.7rem;
-      font-family: 'Great Vibes', cursive;
-      background: linear-gradient(45deg, #f9d423, #ff4e50);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(255, 200, 210, 0.7);
-    }
+        button {
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            transition: all 0.2s ease;
+        }
 
-    /* Sparkle effect */
-    .sparkle {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: sparkle 2s linear infinite;
-    }
+        #yes-btn {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            box-shadow: 0 8px 15px rgba(76, 175, 80, 0.3);
+            max-width: 90vw; 
+            word-wrap: break-word; 
+            white-space: normal;
+            animation: heartbeat 2s infinite;
+        }
 
-    @keyframes sparkle {
-      0% { opacity: 0; transform: translateY(0) scale(1); }
-      50% { opacity: 1; transform: translateY(-50px) scale(1.3); }
-      100% { opacity: 0; transform: translateY(-100px) scale(0.8); }
-    }
-  </style>
+        #yes-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        #no-btn {
+            background: linear-gradient(135deg, #ff4b4b, #ff3333);
+            color: white;
+            box-shadow: 0 8px 15px rgba(255, 75, 75, 0.3);
+        }
+
+        #no-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 75, 75, 0.4);
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 400px) {
+            #main-content { padding: 30px 20px; }
+            h1 { font-size: 1.6rem; }
+            button { font-size: 1.1rem; padding: 12px 24px; }
+        }
+    </style>
 </head>
 <body>
 
-  <h1>💖 Happy 1st Anniversary My Love 💖</h1>
+    <audio id="bg-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="yes-music">
+        <source src="success-music.mp3" type="audio/mpeg">
+    </audio>
 
-  <div class="message">
-    <p>
-      Puro ei <span class="highlight">1 ta bochor</span> onek songhorsho bhora chilo, but still amra aksathe seta ke handle kore niyechi, ageo kore nebo aksathe.  
-      Tomer modhhe jodi amar proti kichu kome jai seta <span class="love">biswas hok ba bhalobasa</span>, seta ke ami abar refill kore debo...  
-      <br><br>
-      Tomer <span class="highlight">baban</span> sobsomoy tomar e chilo, ache ar thakbe. Ei 1year e tumi amke onek kichu diyecho — seta sudhu gifts na, amar bhalo amar kharap dekhano, amar kache theke amkei aro better men banano.  
-      <br><br>
-      Jodi ami kono meye ke chini seta <span class="love">petu</span> chara amar jibone ar keu nei...  
-      Ami really <span class="highlight">thank you</span>, sudhu amar sathe thakar jonno na, amar sob kichur jonno.  
-      Amar <span class="love">lokkhi sona maa</span> — tumi sudhu ador kora ta noy, tomer rege jaoa tao amar kache acceptable.  
-      <br><br>
-      Konodin hath chrbo na promise korechi... jotodin beche achi hath charbo na. Kore feli bhul ami bar bar, kintu tumi to amar sona maa, tumi amke amar nijer maa er moto e sob bhul er por agle tene rakho.  
-      <br><br>
-      Hoyto aro onek jhor jhemela asbe, bhogoban dekhte chaiche je era parbe to! Sob asuk, ami sob handle kore nebo, kintu seta <span class="highlight">tomer sathe</span>.  
-      Jaa bhul korechi segulor khoma chaichi — I am really sorry.  
-      <br><br>
-      Tumi jodi khoma koro tahole amader notun akta journey ektu besi happy bhabe start hobe...  
-      Ar jodi nao koro, ami tomer din kharap hote debo na — tomake happy rakhar jonno tomer <span class="highlight">gandu baban</span> always ache 😁.  
-      <br><br>
-      Ami jani ami khomar joggo nah, kintu tumi to amar <span class="love">lokkhi maa</span> — khoma to kore diteo paro...  
-      Ei notun start ta ami tomar kache koto ta dariye dekhate parbo jani na, kintu i promise ami nijer career ta tomer kache bhalobhabe daranor try kore dekhabo...  
-      <br><br>
-      Ar akdin tumio bolbe proudly — <span class="love">“That’s my baban ❤”</span>.
-    </p>
-  </div>
+    <div id="start-screen" onclick="startApp()">
+        <h1>Tap to open 💌</h1>
+    </div>
 
-  <div class="images">
-    <img src="11.jpg" alt="Us Together">
-    <img src="22.jpg" alt="Happy Moments">
-  </div>
+    <div id="main-content">
+        <img id="gif" src="https://media.tenor.com/vUOMB6b9t8gAAAAi/bubu-dudu-sseeyall.gif" alt="Cute jumping bear">
+        
+        <h1 id="question">Will you be my Valentine?</h1>
+        
+        <div class="btn-container">
+            <button id="yes-btn" onclick="sayYes()">Yes</button>
+            <button id="no-btn" onclick="sayNo()">No</button>
+        </div>
+    </div>
 
-  <footer>
-    I really really really love you, Petu 🫀🐥
-  </footer>
+    <script>
+        // DOM Elements
+        const noButton = document.getElementById("no-btn");
+        const yesButton = document.getElementById("yes-btn");
+        const questionText = document.getElementById("question");
+        const gif = document.getElementById("gif");
+        const startScreen = document.getElementById("start-screen");
+        const mainContent = document.getElementById("main-content");
+        
+        // Audio Elements
+        const bgMusic = document.getElementById("bg-music");
+        const yesMusic = document.getElementById("yes-music");
 
-  <!-- Background Music -->
-  <audio id="bg-music" autoplay loop controls style="margin-bottom: 20px;">
-    <source src="music.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+        // Array of escalating responses for the 'No' button
+        const noTexts = [
+            "No",
+            "Are you sure?",
+            "What if I asked really nicely?",
+            "Pretty please?",
+            "With a cherry on top?",
+            "What about a matcha latte?",
+            "PLEASE",
+            "But :*(",
+            "I am going to die",
+            "Yep I'm dead, goodbye",
+            "Ok you're talking to my ghost",
+            "Please babe",
+            ":((((",
+            "PRETTY PLEASE",
+            "No"
+        ];
 
-  <script>
-    // Sparkling stars effect
-    function createSparkle() {
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      sparkle.style.left = Math.random() * window.innerWidth + "px";
-      sparkle.style.top = Math.random() * window.innerHeight + "px";
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 2000);
-    }
-    setInterval(createSparkle, 200);
-  </script>
+        let noCount = 0;
+        let yesSize = 1.3; // Starting font size in rem
 
+        // Initializes the app, removes overlay, starts logic and audio
+        function startApp() {
+            startScreen.style.opacity = "0";
+            setTimeout(() => {
+                startScreen.style.display = "none";
+                mainContent.style.display = "flex";
+                
+                bgMusic.volume = 0.5; 
+                bgMusic.play().catch(error => console.log("Audio playback requires user interaction.", error));
+            }, 500); 
+        }
+
+        // Logic executed when 'No' is clicked
+        function sayNo() {
+            noCount++;
+            
+            // Cycle through the texts
+            const textIndex = noCount % noTexts.length;
+            noButton.innerText = noTexts[textIndex];
+
+            // Increase the font size and structural padding of the Yes button
+            yesSize += 0.5; 
+            yesButton.style.fontSize = yesSize + "rem";
+            
+            let currentPaddingTop = parseInt(window.getComputedStyle(yesButton).paddingTop);
+            let currentPaddingSide = parseInt(window.getComputedStyle(yesButton).paddingLeft);
+            yesButton.style.padding = (currentPaddingTop + 4) + "px " + (currentPaddingSide + 8) + "px";
+
+            // Swap to a robust sad GIF link
+            gif.src = "https://media.tenor.com/eSMmyYMJXOcAAAAi/miss-you.gif";
+        }
+
+        // Logic executed when 'Yes' is clicked
+        function sayYes() {
+            bgMusic.pause();
+            bgMusic.currentTime = 0; 
+            yesMusic.volume = 0.8;
+            yesMusic.play().catch(error => console.log("Audio playback failed.", error));
+
+            // Swap to the working happy GIF link
+            gif.src = "https://media1.tenor.com/m/gUiu1zyxfzYAAAAC/bear-kiss-bear-kisses.gif";
+            
+            questionText.innerText = "YAY!!! I knew you would say yes! ❤️";
+            
+            // Hide the buttons to finalize the screen
+            document.querySelector(".btn-container").style.display = "none";
+        }
+    </script>
 </body>
 </html>
